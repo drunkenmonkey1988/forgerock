@@ -3,11 +3,13 @@
 
 
 FROM ubuntu:latest
-RUN apt-get update
 
+
+RUN apt-get update
 RUN apt-get install -y -q build-essential python3-pip python-dev-is-python3 git
-# RUN pip3 install --upgrade pip3
+RUN apt-get install nginx -y
 RUN pip3 install --upgrade virtualenv
+RUN pip3 install flask flask_restful
 
 EXPOSE 5000
 EXPOSE 80
@@ -15,7 +17,6 @@ EXPOSE 80
 RUN mkdir deployment
 RUN git clone https://github.com/drunkenmonkey1988/forgerock.git /deployment/
 RUN virtualenv /deployment/env/
-#RUN /deployment/env/bin/pip install flask
 WORKDIR /deployment
 RUN /deployment/env/bin/pip3 install Flask
 RUN /deployment/env/bin/pip3 install requests

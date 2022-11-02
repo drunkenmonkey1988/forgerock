@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restful-api-deployment
+  labels:
+    app: restful-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restful-api-label
+  template:
+    metadata:
+      labels:
+        app: restful-api-label
+    spec:
+      containers:
+      - name: restful-api:latest-container
+        image: dockersid1988/restful-api:latest
+        ports:
+        - containerPort: 5000
