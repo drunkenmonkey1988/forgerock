@@ -5,8 +5,8 @@
 FROM ubuntu:latest
 RUN apt-get update
 
-RUN apt-get install -y -q build-essential python3-pip python3-dev python-simplejson git
-RUN pip3 install --upgrade pip
+RUN apt-get install -y -q build-essential python3-pip python-dev-is-python3 git
+# RUN pip3 install --upgrade pip3
 RUN pip3 install --upgrade virtualenv
 
 EXPOSE 5000
@@ -17,8 +17,12 @@ RUN git clone https://github.com/drunkenmonkey1988/forgerock.git /deployment/
 RUN virtualenv /deployment/env/
 #RUN /deployment/env/bin/pip install flask
 WORKDIR /deployment
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN /deployment/env/bin/pip3 install Flask
+RUN /deployment/env/bin/pip3 install requests
+
 CMD env/bin/python app.py
+
+
 
 #FROM python:3.8-slim-buster
 #FROM ubuntu:20.04
