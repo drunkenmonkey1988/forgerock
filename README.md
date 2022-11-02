@@ -1,7 +1,7 @@
 # restful-api-python-flask
 ### Build and run docker container with Flask RESTful API
 
-Chande directory `cd restful-api-python-flask`
+Change directory `cd restful-api-python-flask`
 
 To check locally before building docker, run 
 ``` 

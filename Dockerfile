@@ -12,15 +12,15 @@
 #CMD env/bin/python app.py
 
 
-
+FROM python:3.8-slim-buster
 FROM ubuntu:latest
-From python:latest
-RUN apt-get update
+EXPOSE port:5000
+EXPOSE port:80
+WORKDIR /restful-api-python-flask
 
-RUN apt-get install -y -q build-essential python-pip python-dev python-simplejson git
-RUN pip install --upgrade pip
-RUN pip install --upgrade virtualenv
+COPY restful-api-python-flask/requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR /Users/siddasari/ForgeRock Assignment/restful-api-python-flask
-RUN /Users/siddasari/ForgeRock Assignment/restful-api-python-flask/env/bin/pip install flask
-CMD env/bin/python app.py
+COPY . .
+
+CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]
