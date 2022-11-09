@@ -7,7 +7,7 @@ from itertools import islice
 app = Flask(__name__)
 
 # hide this in future iterations
-API_KEY = "C227WD9W3LUVKVV9"
+API_KEY = "VN0JXW99GG42HKD7"
 
 @app.route('/api/v1.0/get_ndays/<string:symbol>/<int:ndays>', methods=['GET'])
 def get_closing_price(symbol, ndays):
@@ -16,11 +16,12 @@ def get_closing_price(symbol, ndays):
     if (ndays < 1):
         abort(400)    
 
-    url = "https://www.alphavantage.co/query?apikey={}&function=TIME_SERIES_DAILY&symbol={}".format(API_KEY, symbol)
+    url = "https://www.alphavantage.co/query?apikey={}&function=TIME_SERIES_DAILY_ADJUSTED&symbol={}".format(API_KEY, symbol)
     r = requests.get(url)
     data = r.json()
 
     avg_closing_price = 0
+    print (data)
     ndata = islice(data["Time Series (Daily)"].items(), ndays)
     
 

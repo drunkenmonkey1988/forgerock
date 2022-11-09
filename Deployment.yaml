@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: restful-api-deployment
+  name: restfulapideployment
   labels:
     app: restful-api
 spec:
@@ -15,7 +15,7 @@ spec:
         app: restful-api-label
     spec:
       containers:
-      - name: restful-api:latest-container
+      - name: restful-api-latest
         image: dockersid1988/restful-api:latest
         ports:
         - containerPort: 5000
