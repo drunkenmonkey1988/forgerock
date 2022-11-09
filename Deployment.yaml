@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: restful-api-latest
-        image: dockersid1988/restful-api:latest
+        image: dockersid1988/restful-api:latest2
         ports:
         - containerPort: 5000
