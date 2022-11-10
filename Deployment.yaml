@@ -8,14 +8,30 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: restful-api-label
+       app: restful-api-label    
   template:
     metadata:
       labels:
-        app: restful-api-label
+        app: restful-api-label     
     spec:
       containers:
       - name: restful-api-latest
-        image: dockersid1988/restful-api:latest2
+        image: dockersid1988/restful-api:latest
         ports:
         - containerPort: 5000
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restfulapideployment
+  labels:
+    app: restful-api-label
+spec:
+  type: LoadBalancer
+  ports:
+  -port: 5000
+    targetPort: 5000
+    protocol: TCP
+  selector:
+    app: restful-api-label

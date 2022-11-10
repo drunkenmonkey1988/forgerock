@@ -15,7 +15,7 @@ EXPOSE 5000
 EXPOSE 80
 
 RUN mkdir deployment
-RUN git clone https://github.com/drunkenmonkey1988/forgerock.git /deployment/
+RUN git clone https://github.com/drunkenmonkey1988/forgerock.git/deployment/
 RUN virtualenv /deployment/env/
 WORKDIR /deployment
 RUN /deployment/env/bin/pip3 install Flask
