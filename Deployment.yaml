@@ -16,22 +16,7 @@ spec:
     spec:
       containers:
       - name: restful-api-latest
-        image: dockersid1988/restful-api:latest
+        image: dockersid1988/restful-api2:latest
         ports:
-        - containerPort: 5000
+        - containerPort: 8000
           name: http
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: restfulapideployment
-  labels:
-    app: restful-api-label
-spec:
-  type: LoadBalancer
-  ports:
-  -port: 5000
-    targetPort: 5000
-    protocol: TCP
-  selector:
-    app: restful-api-label
